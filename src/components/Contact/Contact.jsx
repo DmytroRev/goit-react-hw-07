@@ -9,7 +9,6 @@ export const Contact = ({ name, number, id }) => {
   const dispatch = useDispatch();
 
   const handleDelete = () => {
-    console.log("Dispatching deleteContact for id:", id);
     dispatch(deleteContact(id));
   };
 
