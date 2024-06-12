@@ -15,39 +15,33 @@ const UserSchema = Yup.object().shape({
     .required("Required"),
 });
 
+const initialContact = {
+  name: "",
+  number: "",
+};
+
 export default function ContactForm() {
   const dispatch = useDispatch();
 
-  const handleSubmit = (values, { resetForm }) => {
-    dispatch(
-      addContact({
-        username: values.username,
-        number: values.number,
-      })
-    );
-    resetForm();
+  const handleSubmit = (values, actions) => {
+    const { name } = values;
+    const { number } = values;
+    dispatch(addContact(name, number));
+    actions.resetForm();
   };
 
   return (
     <div>
       <Formik
-        initialValues={{ username: "", number: "" }}
+        initialValues={initialContact}
         onSubmit={handleSubmit}
         validationSchema={UserSchema}
       >
         <Form className={css.container}>
           <div className={css.containerList}>
             <p>Name</p>
-            <Field
-              className={css.contactFormInput}
-              type="text"
-              name="username"
-            />
-            <ErrorMessage
-              className={css.error}
-              name="username"
-              component="span"
-            />
+            <Field className={css.contactFormInput} type="text" name="name" />
+            <ErrorMessage className={css.error} name="name" component="span" />
           </div>
           <div className={css.containerList}>
             <p>Number</p>
