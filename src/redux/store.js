@@ -5,7 +5,7 @@ import { contactsReducer } from "./contactsSlice";
 
 
 
-const store = configureStore({
+export const store = configureStore({
   reducer: {
     contacts: contactsReducer,
     filters: filtersReducer,
@@ -13,4 +13,4 @@ const store = configureStore({
   },
 
 });
-export default store;
+

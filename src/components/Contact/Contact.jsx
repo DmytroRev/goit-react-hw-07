@@ -5,7 +5,7 @@ import { deleteContact } from "../../redux/contactsOps";
 import css from "./Contact.module.css";
 import { useDispatch } from "react-redux";
 
-export const Contact = ({ name, number, id }) => {
+export const Contact = ({ item: { name, number, id } }) => {
   const dispatch = useDispatch();
 
   const handleDelete = () => {
